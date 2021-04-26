@@ -1,0 +1,35 @@
+{
+  "name": "ubiqua_backend_test",
+  "version": "1.0.0",
+  "description": "Pokemon Api for build battle team",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AzureJaffoRepo/ubiqua_backend_test.git"
+  },
+  "keywords": [
+    "ubiquatest"
+  ],
+  "author": "Jesus Fuentes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AzureJaffoRepo/ubiqua_backend_test/issues"
+  },
+  "homepage": "https://github.com/AzureJaffoRepo/ubiqua_backend_test#readme",
+  "dependencies": {
+    "@types/node": "^14.14.41",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "typescript": "^4.2.4"
+  }
+}
