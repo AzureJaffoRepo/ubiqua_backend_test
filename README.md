@@ -35,6 +35,11 @@ nodemon ./build
 npm install nodemon
 ```
 
+## Next Steps
+* Develop a user manager to store all pokemon's team players.
+* Create the stats validator by pokemon's type to define winner's battles.
+* Include route to get others team's players for battle
+* Store data for a global winners dashboard
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
