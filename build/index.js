@@ -61,5 +61,5 @@ routes_1.Routes.forEach(function (route) { return __awaiter(void 0, void 0, void
     });
 }); });
 app.listen(port, function () {
-    console.log("Example app listening at http://localhost:" + port);
+    console.log("Example app listening at http://localhost:" + process.env.PORT);
 });
