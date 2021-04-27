@@ -4,7 +4,7 @@
   "description": "Pokemon Api for build battle team",
   "main": "index.js",
   "scripts": {
-    "start": "node /build",
+    "start": "node ./build",
     "test": "test"
   },
   "repository": {
