@@ -20,7 +20,7 @@ export class PokeAPIController {
 
             this.fetchData.GetAllKantoPokemonFetch()
             .then((pokemons: any) => {
-                console.log(pokemons.results)
+                //console.log(pokemons.results)
                 pokemons.results.forEach((element: any) => {
                     this.fetchData.GetPokemonDetailFetch(element.url)
                     .then((detail: any) => {
@@ -52,7 +52,7 @@ export class PokeAPIController {
                 pokeInfo.Name = info.name;
                 pokeInfo.Types = info.types
                 pokeInfo.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + info.id + ".png"
-                console.log(pokeInfo)
+                //console.log(pokeInfo)
                 resolve(pokeInfo);
             })
         })
