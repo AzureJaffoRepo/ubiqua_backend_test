@@ -23,6 +23,6 @@ Routes.forEach(async (route: any) => {
   });
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Example app listening at http://localhost:${process.env.PORT}`)
 })
