@@ -60,6 +60,6 @@ routes_1.Routes.forEach(function (route) { return __awaiter(void 0, void 0, void
         return [2 /*return*/];
     });
 }); });
-app.listen(port, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("Example app listening at http://localhost:" + process.env.PORT);
 });
