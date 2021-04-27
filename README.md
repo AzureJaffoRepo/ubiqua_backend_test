@@ -34,6 +34,9 @@ nodemon ./build
 ```bash
 npm install nodemon
 ```
+## Things i learn of this
+1. How to use FETCH in Express.JS!!! and how make to work!!! this is something totally new for me :grin:
+2. Improve the way i organize the response data.
 
 ## Next Steps
 * Develop a user manager to store all pokemon's team players.
