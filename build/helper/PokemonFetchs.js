@@ -64,7 +64,7 @@ var PokemonFetchs = /** @class */ (function () {
         return new Promise(function (resolve, reject) {
             pokemon.forEach(function (element) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    console.log(pokeList.length);
+                    //console.log(pokeList.length)
                     fetch(element.url)
                         .then(function (res) { return res.json(); })
                         .then(function (info) {
@@ -75,11 +75,10 @@ var PokemonFetchs = /** @class */ (function () {
                         pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + info.id + ".png";
                         pokeData.DataURL = element.url;
                         pokeData.Types = info.types;
-                        if (pokeList.length <= 9) {
-                            pokeList.push(pokeData);
-                        }
-                        else {
-                            resolve(pokeList);
+                        pokeList.push(pokeData);
+                        if (pokeList.length == 150) {
+                            var sortList = pokeList.sort(function () { return Math.random() - 1; }).slice(0, 10);
+                            resolve(sortList);
                         }
                     });
                     return [2 /*return*/];
