@@ -1,3 +1,5 @@
+import PokemonData from "../models/PokemonData";
+
 
 const fetch = require('node-fetch')
 
@@ -14,13 +16,27 @@ export default class PokemonFetchs {
         })
     }
 
-    GetPokemonDetailFetch(url: string) {
+    GetPokemonDetailFetch(pokemon: any[]) {
+        let pokeList: PokemonData[] = [];
         return new Promise((resolve, reject) => {
-            fetch(url)
-            .then((res: any) => res.json())
-            .then(async (info: any) => {
-                //console.log(info)
-                resolve(info);
+            pokemon.forEach(async (element) => {
+                console.log(pokeList.length)
+                fetch(element.url)
+                .then((res: any) => res.json())
+                .then((info: any) => {
+                    //console.log(info)
+                    let pokeData = new PokemonData();
+                    pokeData.ID = info.id
+                    pokeData.Name = info.name
+                    pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + info.id + ".png"
+                    pokeData.DataURL = element.url
+                    pokeData.Types = info.types
+                    if(pokeList.length <= 9) {
+                        pokeList.push(pokeData);
+                    } else {
+                        resolve(pokeList)
+                    } 
+                })
             })
         })
     }
