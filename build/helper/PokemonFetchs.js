@@ -35,7 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var PokemonData_1 = __importDefault(require("../models/PokemonData"));
 var fetch = require('node-fetch');
 var PokemonFetchs = /** @class */ (function () {
     function PokemonFetchs() {
@@ -54,15 +58,30 @@ var PokemonFetchs = /** @class */ (function () {
             }); });
         });
     };
-    PokemonFetchs.prototype.GetPokemonDetailFetch = function (url) {
+    PokemonFetchs.prototype.GetPokemonDetailFetch = function (pokemon) {
         var _this = this;
+        var pokeList = [];
         return new Promise(function (resolve, reject) {
-            fetch(url)
-                .then(function (res) { return res.json(); })
-                .then(function (info) { return __awaiter(_this, void 0, void 0, function () {
+            pokemon.forEach(function (element) { return __awaiter(_this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    //console.log(info)
-                    resolve(info);
+                    console.log(pokeList.length);
+                    fetch(element.url)
+                        .then(function (res) { return res.json(); })
+                        .then(function (info) {
+                        //console.log(info)
+                        var pokeData = new PokemonData_1.default();
+                        pokeData.ID = info.id;
+                        pokeData.Name = info.name;
+                        pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + info.id + ".png";
+                        pokeData.DataURL = element.url;
+                        pokeData.Types = info.types;
+                        if (pokeList.length <= 9) {
+                            pokeList.push(pokeData);
+                        }
+                        else {
+                            resolve(pokeList);
+                        }
+                    });
                     return [2 /*return*/];
                 });
             }); });

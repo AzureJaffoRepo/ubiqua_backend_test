@@ -3,9 +3,10 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { Request, Response } from "express";
 import { Routes }  from "./routes";
+import { SERVER_PORT } from './global/environment';
 
 const app = express()
-const port = 3000
+const port = SERVER_PORT
 
 app.use(cors())
 //app.use(bodyParser.json()); 
@@ -23,6 +24,6 @@ Routes.forEach(async (route: any) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Example app listening at http://localhost:${process.env.PORT}`)
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
 })
