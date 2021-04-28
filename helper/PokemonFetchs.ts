@@ -20,7 +20,7 @@ export default class PokemonFetchs {
         let pokeList: PokemonData[] = [];
         return new Promise((resolve, reject) => {
             pokemon.forEach(async (element) => {
-                console.log(pokeList.length)
+                //console.log(pokeList.length)
                 fetch(element.url)
                 .then((res: any) => res.json())
                 .then((info: any) => {
@@ -31,11 +31,11 @@ export default class PokemonFetchs {
                     pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + info.id + ".png"
                     pokeData.DataURL = element.url
                     pokeData.Types = info.types
-                    if(pokeList.length <= 9) {
-                        pokeList.push(pokeData);
-                    } else {
-                        resolve(pokeList)
-                    } 
+                    pokeList.push(pokeData);
+                    if(pokeList.length == 150) {
+                        let sortList = pokeList.sort(() => Math.random() - 1).slice(0,10)
+                        resolve(sortList);
+                    }
                 })
             })
         })
