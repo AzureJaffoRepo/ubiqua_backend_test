@@ -16,26 +16,13 @@ export class PokeAPIController {
 
             let pokeList: PokemonData[] = [];
 
-            ///let index = 1;
-
             this.fetchData.GetAllKantoPokemonFetch()
             .then((pokemons: any) => {
-                //console.log(pokemons.results)
-                pokemons.results.forEach((element: any) => {
-                    this.fetchData.GetPokemonDetailFetch(element.url)
-                    .then((detail: any) => {
-                        let pokeData = new PokemonData();
-                        pokeData.ID = detail.id
-                        pokeData.Name = element.name
-                        pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + detail.id + ".png"
-                        pokeData.DataURL = element.url
-                        pokeData.Types = detail.types
-                        pokeList.push(pokeData);
-                    })
-                });
-                setTimeout(() => {
-                    resolve(pokeList)
-                }, 1250);
+                this.fetchData.GetPokemonDetailFetch(pokemons.results)
+                .then((detail: any) => {
+                    //console.log(detail);
+                    resolve(detail)
+                })
             })
         })
     }

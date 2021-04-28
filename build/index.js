@@ -42,8 +42,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var routes_1 = require("./routes");
+var environment_1 = require("./global/environment");
 var app = express_1.default();
-var port = 3000;
+var port = environment_1.SERVER_PORT;
 app.use(cors_1.default());
 //app.use(bodyParser.json()); 
 routes_1.Routes.forEach(function (route) { return __awaiter(void 0, void 0, void 0, function () {
@@ -60,6 +61,6 @@ routes_1.Routes.forEach(function (route) { return __awaiter(void 0, void 0, void
         return [2 /*return*/];
     });
 }); });
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Example app listening at http://localhost:" + process.env.PORT);
+app.listen(port, function () {
+    console.log("Example app listening at http://localhost:" + port);
 });

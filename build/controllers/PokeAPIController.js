@@ -5,7 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PokeAPIController = void 0;
-var PokemonData_1 = __importDefault(require("../models/PokemonData"));
 var PokemonDetail_1 = __importDefault(require("../models/PokemonDetail"));
 var PokemonFetchs_1 = __importDefault(require("../helper/PokemonFetchs"));
 var PokeAPIController = /** @class */ (function () {
@@ -18,25 +17,13 @@ var PokeAPIController = /** @class */ (function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             var pokeList = [];
-            ///let index = 1;
             _this.fetchData.GetAllKantoPokemonFetch()
                 .then(function (pokemons) {
-                //console.log(pokemons.results)
-                pokemons.results.forEach(function (element) {
-                    _this.fetchData.GetPokemonDetailFetch(element.url)
-                        .then(function (detail) {
-                        var pokeData = new PokemonData_1.default();
-                        pokeData.ID = detail.id;
-                        pokeData.Name = element.name;
-                        pokeData.Picture = "https://pokeres.bastionbot.org/images/pokemon/" + detail.id + ".png";
-                        pokeData.DataURL = element.url;
-                        pokeData.Types = detail.types;
-                        pokeList.push(pokeData);
-                    });
+                _this.fetchData.GetPokemonDetailFetch(pokemons.results)
+                    .then(function (detail) {
+                    //console.log(detail);
+                    resolve(detail);
                 });
-                setTimeout(function () {
-                    resolve(pokeList);
-                }, 1250);
             });
         });
     };
